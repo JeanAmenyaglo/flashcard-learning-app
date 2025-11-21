@@ -1,5 +1,5 @@
 // Sample flashcards data
-let flashcards = [
+let flashcards = JSON.parse(localStorage.getItem('flashcards')) || [
     {
         term: "Jean Amenyaglo",
         description: "My name is Jean Amenyaglo. I am a student at NAIT studying software development and also doing a dual master's degree at the University of Ottawa. It has been a great experience so far!"
@@ -26,6 +26,11 @@ const shuffleBtn = document.getElementById('shuffleBtn');
 // Current card index for study mode
 let currentCardIndex = 0;
 let isFlipped = false;
+
+// Save flashcards to localStorage
+function saveFlashcards() {
+    localStorage.setItem('flashcards', JSON.stringify(flashcards));
+}
 
 // Initialize the app
 function init() {
@@ -89,6 +94,7 @@ function addFlashcard() {
     }
     
     flashcards.push({ term, description });
+    saveFlashcards();
     renderFlashcards();
     updateStudyCard();
     
@@ -102,6 +108,7 @@ function addFlashcard() {
 function removeFlashcard(index) {
     if (confirm('Are you sure you want to remove this flashcard?')) {
         flashcards.splice(index, 1);
+        saveFlashcards();
         renderFlashcards();
         
         // Adjust current card index if needed
@@ -119,6 +126,7 @@ function clearAllFlashcards() {
     
     if (confirm('Are you sure you want to remove all flashcards?')) {
         flashcards = [];
+        saveFlashcards();
         currentCardIndex = 0;
         renderFlashcards();
         updateStudyCard();
@@ -179,6 +187,7 @@ function shuffleFlashcards() {
         [flashcards[i], flashcards[j]] = [flashcards[j], flashcards[i]];
     }
     
+    saveFlashcards();
     currentCardIndex = 0;
     renderFlashcards();
     updateStudyCard();
