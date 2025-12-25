@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Flashcard Learning System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Flashcard Learning System</h1>
+            <p class="subtitle">Create, manage, and study your flashcards effectively</p>
+        </header>
+        <div class="app-container">
+            <section class="card builder-section">
+                <h2>Create New Flashcard</h2>
+                <div class="form-group">
+                    <label for="term">Term</label>
+                    <input type="text" id="term" placeholder="Enter term or question">
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" placeholder="Enter definition or answer"></textarea>
+                </div>
+                <button id="submitBtn" class="btn">Add Flashcard</button>
+                <button id="clearBtn" class="btn btn-secondary" style="margin-left: 10px;">Clear All</button>
+            </section>
+            <section class="card flashcards-section">
+                <h2>Your Flashcards</h2>
+                <div id="flashcardsContainer" class="flashcards-container">
+                    <!-- Flashcards will be dynamically added here -->
+                </div>
+            </section>
+            <section class="card study-section">
+                <h2>Study Mode</h2>
+                <div id="studyCard" class="study-card">
+                    <div class="study-card-inner">
+                        <div class="study-card-front">
+                            <div class="study-term" id="studyTerm">Click to start studying</div>
+                            <p>Click the card to flip</p>
+                        </div>
+                        <div class="study-card-back">
+                            <div class="study-description" id="studyDescription">Add some flashcards first</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="study-controls">
+                    <button id="prevBtn" class="btn btn-secondary">Previous</button>
+                    <button id="nextBtn" class="btn">Next</button>
+                    <button id="shuffleBtn" class="btn btn-secondary">Shuffle</button>
+                </div>
+            </section>
+        </div>
+        <div class="instructions">
+            <h3>How to Use This Flashcard System</h3>
+            <ul>
+                <li><strong>Create Flashcards:</strong> Enter a term and its description, then click "Add Flashcard"</li>
+                <li><strong>Study Mode:</strong> Click on the study card to flip it and reveal the answer</li>
+                <li><strong>Navigation:</strong> Use the Previous and Next buttons to browse through your flashcards</li>
+                <li><strong>Shuffle:</strong> Click the Shuffle button to randomize the order of your flashcards</li>
+                <li><strong>Remove Cards:</strong> Click the "Remove" button on any flashcard to delete it</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
