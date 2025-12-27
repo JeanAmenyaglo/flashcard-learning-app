@@ -4,6 +4,12 @@ on:
   push:
     branches:
       - main
+# add a workflow dispatch and make sure you add exclusion paths such that changes in those paths like :
+# - 'README.md'
+# - '.github/**'
+# - '.gitignore'
+# should not trigger the pipeline
+
 
 jobs:
   deploy:
@@ -12,9 +18,9 @@ jobs:
     steps:
       # Step 1: Checkout the repository
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3 #we now have version 6 for checkout
 
-      # Step 2: Configure AWS credentials
+      # Step 2: Configure AWS credentials # please desist from the use of secrets and keys. Always use OIDC and IAM ROLES
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
