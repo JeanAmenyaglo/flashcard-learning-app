@@ -4,6 +4,13 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - 'README.md'
+      - '.github/**'
+      - '.gitignore'
+      - '**/MERGE*'  
+  workflow_dispatch:
+
 
 jobs:
   deploy:
